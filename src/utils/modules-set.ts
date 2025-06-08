@@ -81,7 +81,7 @@ function generateModulesSet() {
           infer: true,
         }),
         loaderOptions: {
-          path: path.join(__dirname, '/../i18n/'),
+          path: path.join(__dirname, '../generated/i18n/'),
           watch: isLocal,
         },
         typesOutputPath: path.join(

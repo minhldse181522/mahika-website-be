@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:16
-    container_name: postgres-db
+    container_name: postgres-db-mahika
     restart: always
     environment:
       POSTGRES_USER: postgres
@@ -13,16 +11,16 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - '5433:5432'
 
   redis:
     image: redis:7
-    container_name: redis
+    container_name: redis-mahika
     restart: always
     environment:
       TZ: "UTC"
     ports:
-      - '6379:6379'
+      - '6380:6379'
     healthcheck:
       test: ['CMD', 'redis-cli', 'ping']
       interval: 5s
@@ -48,7 +46,7 @@ services:
       - postgres
       - redis
     ports:
-      - '3001:3001'
+      - '3002:3001'
     command: ['npm', 'run', 'start:prod']
 
 volumes:
