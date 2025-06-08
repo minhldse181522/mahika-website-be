@@ -3,7 +3,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { SeederOptions } from 'typeorm-extension';
 
 export const AppDataSource = new DataSource({
-  type: process.env.DATABASE_TYPE,
+  type: process.env.DATABASE_TYPE as any,
   url: process.env.DATABASE_URL,
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT

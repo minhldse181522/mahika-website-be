@@ -3,7 +3,6 @@ import { ApiModule } from '@/api/api.module';
 import { BackgroundModule } from '@/background/background.module';
 import appConfig from '@/config/app.config';
 import { AllConfigType } from '@/config/config.type';
-import { Environment } from '@/constants/app.constant';
 import databaseConfig from '@/database/config/database.config';
 import { TypeOrmConfigService } from '@/database/typeorm-config.service';
 import redisConfig from '@/redis/config/redis.config';
@@ -13,14 +12,7 @@ import { ModuleMetadata } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { redisStore } from 'cache-manager-ioredis-yet';
-import {
-  AcceptLanguageResolver,
-  HeaderResolver,
-  I18nModule,
-  QueryResolver,
-} from 'nestjs-i18n';
 import { LoggerModule } from 'nestjs-pino';
-import path from 'path';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import loggerFactory from './logger-factory';
 
@@ -66,33 +58,33 @@ function generateModulesSet() {
     inject: [ConfigService],
   });
 
-  const i18nModule = I18nModule.forRootAsync({
-    resolvers: [
-      { use: QueryResolver, options: ['lang'] },
-      AcceptLanguageResolver,
-      new HeaderResolver(['x-lang']),
-    ],
-    useFactory: (configService: ConfigService<AllConfigType>) => {
-      const env = configService.get('app.nodeEnv', { infer: true });
-      const isLocal = env === Environment.LOCAL;
-      const isDevelopment = env === Environment.DEVELOPMENT;
-      return {
-        fallbackLanguage: configService.getOrThrow('app.fallbackLanguage', {
-          infer: true,
-        }),
-        loaderOptions: {
-          path: path.join(__dirname, '../generated/i18n/'),
-          watch: isLocal,
-        },
-        typesOutputPath: path.join(
-          __dirname,
-          '../../src/generated/i18n.generated.ts',
-        ),
-        logging: isLocal || isDevelopment, // log info on missing keys
-      };
-    },
-    inject: [ConfigService],
-  });
+  // const i18nModule = I18nModule.forRootAsync({
+  //   resolvers: [
+  //     { use: QueryResolver, options: ['lang'] },
+  //     AcceptLanguageResolver,
+  //     new HeaderResolver(['x-lang']),
+  //   ],
+  //   useFactory: (configService: ConfigService<AllConfigType>) => {
+  //     const env = configService.get('app.nodeEnv', { infer: true });
+  //     const isLocal = env === Environment.LOCAL;
+  //     const isDevelopment = env === Environment.DEVELOPMENT;
+  //     return {
+  //       fallbackLanguage: configService.getOrThrow('app.fallbackLanguage', {
+  //         infer: true,
+  //       }),
+  //       loaderOptions: {
+  //         path: path.join(__dirname, '/../i18n/'),
+  //         watch: isLocal,
+  //       },
+  //       typesOutputPath: path.join(
+  //         __dirname,
+  //         '../../src/generated/i18n.generated.ts',
+  //       ),
+  //       logging: isLocal || isDevelopment, // log info on missing keys
+  //     };
+  //   },
+  //   inject: [ConfigService],
+  // });
 
   const loggerModule = LoggerModule.forRootAsync({
     imports: [ConfigModule],
@@ -132,7 +124,6 @@ function generateModulesSet() {
         BackgroundModule,
         cacheModule,
         dbModule,
-        i18nModule,
         loggerModule,
       ];
       break;
@@ -142,7 +133,6 @@ function generateModulesSet() {
         bullModule,
         cacheModule,
         dbModule,
-        i18nModule,
         loggerModule,
       ];
       break;
@@ -152,7 +142,6 @@ function generateModulesSet() {
         BackgroundModule,
         cacheModule,
         dbModule,
-        i18nModule,
         loggerModule,
       ];
       break;

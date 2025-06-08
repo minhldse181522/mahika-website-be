@@ -16,7 +16,7 @@ function setupSwagger(app: INestApplication) {
     .addApiKey({ type: 'apiKey', name: 'Api-Key', in: 'header' }, 'Api-Key')
     .addServer(
       configService.getOrThrow('app.url', { infer: true }),
-      'Development',
+      'Local',
     )
     .addServer('https://example.com', 'Staging')
     .build();

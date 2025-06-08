@@ -80,7 +80,7 @@ export default registerAs<AppConfig>('app', () => {
       : 3000;
 
   return {
-    nodeEnv: process.env.NODE_ENV || Environment.DEVELOPMENT,
+    nodeEnv: process.env.NODE_ENV || Environment.LOCAL,
     name: process.env.APP_NAME || 'app',
     url: process.env.APP_URL || `http://localhost:${port}`,
     port,

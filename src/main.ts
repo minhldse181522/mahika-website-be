@@ -36,8 +36,8 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService<AllConfigType>);
   const reflector = app.get(Reflector);
-  const isDevelopment =
-    configService.getOrThrow('app.nodeEnv', { infer: true }) === 'development';
+  const nodeEnv = configService.getOrThrow('app.nodeEnv', {infer: true})
+  const isDevelopment = nodeEnv === 'development' || nodeEnv === 'local';
   const corsOrigin = configService.getOrThrow('app.corsOrigin', {
     infer: true,
   });
@@ -83,9 +83,10 @@ async function bootstrap() {
     setupSwagger(app);
   }
 
-  await app.listen(configService.getOrThrow('app.port', { infer: true }));
-
-  console.info(`Server running on ${await app.getUrl()}`);
+  const port = configService.getOrThrow('app.port', { infer: true });
+  const host = 'localhost';
+  await app.listen(port, host);
+  console.info(`Server running on http://${host}:${port}`);
 
   return app;
 }

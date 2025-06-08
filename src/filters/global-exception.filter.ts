@@ -1,10 +1,8 @@
 import { ErrorDetailDto } from '@/common/dto/error-detail.dto';
 import { ErrorDto } from '@/common/dto/error.dto';
 import { AllConfigType } from '@/config/config.type';
-import { constraintErrors } from '@/constants/constraint-errors';
 import { ErrorCode } from '@/constants/error-code.constant';
 import { ValidationException } from '@/exceptions/validation.exception';
-import { I18nTranslations } from '@/generated/i18n.generated';
 import {
   type ArgumentsHost,
   Catch,
@@ -17,12 +15,10 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { STATUS_CODES } from 'http';
-import { I18nContext } from 'nestjs-i18n';
 import { EntityNotFoundError, QueryFailedError } from 'typeorm';
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
-  private i18n: I18nContext<I18nTranslations>;
   private debug: boolean = false;
   private readonly logger = new Logger(GlobalExceptionFilter.name);
 
@@ -33,7 +29,6 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse();
     const request = ctx.getRequest();
 
-    this.i18n = request.i18nContext;
     this.debug = this.configService.getOrThrow('app.debug', { infer: true });
 
     let error: ErrorDto;
@@ -107,8 +102,8 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       errorCode:
         Object.keys(ErrorCode)[Object.values(ErrorCode).indexOf(r.errorCode)],
       message:
-        r.message ||
-        this.i18n.t(r.errorCode as unknown as keyof I18nTranslations),
+        r.message
+        // this.i18n.t(r.errorCode as unknown as keyof I18nTranslations),
     };
 
     this.logger.debug(exception);
@@ -146,15 +141,10 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       ? {
           status: HttpStatus.CONFLICT,
           message: r.constraint
-            ? this.i18n.t(
-                (constraintErrors[r.constraint] ||
-                  r.constraint) as keyof I18nTranslations,
-              )
-            : undefined,
         }
       : {
           status: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: this.i18n.t('common.error.internal_server_error'),
+          message: 'internal_server_error'
         };
     const errorRes = {
       timestamp: new Date().toISOString(),
@@ -179,7 +169,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       timestamp: new Date().toISOString(),
       statusCode: status,
       error: STATUS_CODES[status],
-      message: this.i18n.t('common.error.entity_not_found'),
+      message: 'entity_not_found',
     } as unknown as ErrorDto;
 
     this.logger.debug(error);
