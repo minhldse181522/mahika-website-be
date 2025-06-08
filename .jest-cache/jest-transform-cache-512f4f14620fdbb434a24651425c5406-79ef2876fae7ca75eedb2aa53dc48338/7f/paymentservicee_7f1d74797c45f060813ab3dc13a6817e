@@ -1,0 +1,33 @@
+19bb96993643d4e958ff6c8da180a1cf
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PaymentService = void 0;
+const tslib_1 = require("tslib");
+const common_1 = require("@nestjs/common");
+const payment_repository_1 = require("./payment.repository");
+const node_1 = tslib_1.__importDefault(require("@payos/node"));
+let PaymentService = class PaymentService {
+    paymentRepo;
+    constructor(paymentRepo) {
+        this.paymentRepo = paymentRepo;
+    }
+    async createPayment(paymentRequestDTO) {
+        // import client id, apiKey and checkSumKey here
+        const payOS = new node_1.default('client-id', 'api-key', 'checksum-key');
+        const orderPayOS = {
+            orderCode: 123,
+            amount: paymentRequestDTO.price,
+            description: paymentRequestDTO.description,
+            returnUrl: 'https://www.youtube.com/watch?v=a_kq2ueesoc', // thanh toán thành công
+            cancelUrl: 'https://example.com/cancel', // thanh toán thất bại
+        };
+        const paymentLink = await payOS.createPaymentLink(orderPayOS);
+        return paymentLink.checkoutUrl;
+    }
+};
+exports.PaymentService = PaymentService;
+exports.PaymentService = PaymentService = tslib_1.__decorate([
+    (0, common_1.Injectable)(),
+    tslib_1.__metadata("design:paramtypes", [payment_repository_1.PaymentRepository])
+], PaymentService);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXEZQVFVcXFNVTU1FUjIwMjVfRlBUXFxFWEUyMDFcXG1haGlrYS13ZWJzaXRlLWJlXFxzcmNcXGFwaVxccGF5bWVudFxccGF5bWVudC5zZXJ2aWNlZS50cyIsIm1hcHBpbmdzIjoiOzs7O0FBQUEsMkNBQTRDO0FBQzVDLDZEQUF5RDtBQUV6RCwrREFBZ0M7QUFHekIsSUFBTSxjQUFjLEdBQXBCLE1BQU0sY0FBYztJQUVOO0lBQW5CLFlBQW1CLFdBQThCO1FBQTlCLGdCQUFXLEdBQVgsV0FBVyxDQUFtQjtJQUFHLENBQUM7SUFFckQsS0FBSyxDQUFDLGFBQWEsQ0FBQyxpQkFBb0M7UUFFdEQsZ0RBQWdEO1FBQ2hELE1BQU0sS0FBSyxHQUFHLElBQUksY0FBSyxDQUFDLFdBQVcsRUFBRSxTQUFTLEVBQUMsY0FBYyxDQUFDLENBQUM7UUFFL0QsTUFBTSxVQUFVLEdBQUc7WUFDakIsU0FBUyxFQUFFLEdBQUc7WUFDZCxNQUFNLEVBQUUsaUJBQWlCLENBQUMsS0FBSztZQUMvQixXQUFXLEVBQUUsaUJBQWlCLENBQUMsV0FBVztZQUMxQyxTQUFTLEVBQUUsNkNBQTZDLEVBQUUsd0JBQXdCO1lBQ2xGLFNBQVMsRUFBRSw0QkFBNEIsRUFBRSxzQkFBc0I7U0FDaEUsQ0FBQztRQUVGLE1BQU0sV0FBVyxHQUFHLE1BQU0sS0FBSyxDQUFDLGlCQUFpQixDQUFDLFVBQVUsQ0FBQyxDQUFDO1FBQzlELE9BQU8sV0FBVyxDQUFDLFdBQVcsQ0FBQztJQUNqQyxDQUFDO0NBQ0YsQ0FBQTtBQXBCWSx3Q0FBYzt5QkFBZCxjQUFjO0lBRDFCLElBQUEsbUJBQVUsR0FBRTs2Q0FHcUIsc0NBQWlCO0dBRnRDLGNBQWMsQ0FvQjFCIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFxGUFRVXFxTVU1NRVIyMDI1X0ZQVFxcRVhFMjAxXFxtYWhpa2Etd2Vic2l0ZS1iZVxcc3JjXFxhcGlcXHBheW1lbnRcXHBheW1lbnQuc2VydmljZWUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSW5qZWN0YWJsZSB9IGZyb20gXCJAbmVzdGpzL2NvbW1vblwiO1xyXG5pbXBvcnQgeyBQYXltZW50UmVwb3NpdG9yeSB9IGZyb20gXCIuL3BheW1lbnQucmVwb3NpdG9yeVwiO1xyXG5pbXBvcnQgeyBQYXltZW50UmVxdWVzdERUTyB9IGZyb20gXCJAL2NvbW1vbi9kdG8vcGF5bWVudC1yZXF1ZXN0LmR0b1wiO1xyXG5pbXBvcnQgUGF5T1MgZnJvbSAnQHBheW9zL25vZGUnO1xyXG5cclxuQEluamVjdGFibGUoKVxyXG5leHBvcnQgY2xhc3MgUGF5bWVudFNlcnZpY2Uge1xyXG5cclxuICBjb25zdHJ1Y3RvcihwdWJsaWMgcGF5bWVudFJlcG86IFBheW1lbnRSZXBvc2l0b3J5KSB7fVxyXG5cclxuICBhc3luYyBjcmVhdGVQYXltZW50KHBheW1lbnRSZXF1ZXN0RFRPOiBQYXltZW50UmVxdWVzdERUTykge1xyXG4gICBcclxuICAgIC8vIGltcG9ydCBjbGllbnQgaWQsIGFwaUtleSBhbmQgY2hlY2tTdW1LZXkgaGVyZVxyXG4gICAgY29uc3QgcGF5T1MgPSBuZXcgUGF5T1MoJ2NsaWVudC1pZCcsICdhcGkta2V5JywnY2hlY2tzdW0ta2V5Jyk7XHJcblxyXG4gICAgY29uc3Qgb3JkZXJQYXlPUyA9IHtcclxuICAgICAgb3JkZXJDb2RlOiAxMjMsXHJcbiAgICAgIGFtb3VudDogcGF5bWVudFJlcXVlc3REVE8ucHJpY2UsXHJcbiAgICAgIGRlc2NyaXB0aW9uOiBwYXltZW50UmVxdWVzdERUTy5kZXNjcmlwdGlvbixcclxuICAgICAgcmV0dXJuVXJsOiAnaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1hX2txMnVlZXNvYycsIC8vIHRoYW5oIHRvw6FuIHRow6BuaCBjw7RuZ1xyXG4gICAgICBjYW5jZWxVcmw6ICdodHRwczovL2V4YW1wbGUuY29tL2NhbmNlbCcsIC8vIHRoYW5oIHRvw6FuIHRo4bqldCBi4bqhaVxyXG4gICAgfTtcclxuXHJcbiAgICBjb25zdCBwYXltZW50TGluayA9IGF3YWl0IHBheU9TLmNyZWF0ZVBheW1lbnRMaW5rKG9yZGVyUGF5T1MpO1xyXG4gICAgcmV0dXJuIHBheW1lbnRMaW5rLmNoZWNrb3V0VXJsOyBcclxuICB9XHJcbn0iXSwidmVyc2lvbiI6M30=

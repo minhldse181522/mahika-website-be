@@ -1,0 +1,25 @@
+3fb4365ff465b960de311d75a960502d
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PaymentRequestDTO = void 0;
+const tslib_1 = require("tslib");
+const class_validator_1 = require("class-validator");
+class PaymentRequestDTO {
+    price;
+    description;
+    name;
+}
+exports.PaymentRequestDTO = PaymentRequestDTO;
+tslib_1.__decorate([
+    (0, class_validator_1.IsNumber)(),
+    tslib_1.__metadata("design:type", Number)
+], PaymentRequestDTO.prototype, "price", void 0);
+tslib_1.__decorate([
+    (0, class_validator_1.IsString)(),
+    tslib_1.__metadata("design:type", String)
+], PaymentRequestDTO.prototype, "description", void 0);
+tslib_1.__decorate([
+    (0, class_validator_1.IsString)(),
+    tslib_1.__metadata("design:type", String)
+], PaymentRequestDTO.prototype, "name", void 0);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXEZQVFVcXFNVTU1FUjIwMjVfRlBUXFxFWEUyMDFcXG1haGlrYS13ZWJzaXRlLWJlXFxzcmNcXGNvbW1vblxcZHRvXFxwYXltZW50LXJlcXVlc3QuZHRvLnRzIiwibWFwcGluZ3MiOiI7Ozs7QUFBQSxxREFBcUQ7QUFFckQsTUFBYSxpQkFBaUI7SUFFNUIsS0FBSyxDQUFTO0lBRWQsV0FBVyxDQUFTO0lBRXBCLElBQUksQ0FBUztDQUNkO0FBUEQsOENBT0M7QUFMQztJQURDLElBQUEsMEJBQVEsR0FBRTs7Z0RBQ0c7QUFFZDtJQURDLElBQUEsMEJBQVEsR0FBRTs7c0RBQ1M7QUFFcEI7SUFEQyxJQUFBLDBCQUFRLEdBQUU7OytDQUNFIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFxGUFRVXFxTVU1NRVIyMDI1X0ZQVFxcRVhFMjAxXFxtYWhpa2Etd2Vic2l0ZS1iZVxcc3JjXFxjb21tb25cXGR0b1xccGF5bWVudC1yZXF1ZXN0LmR0by50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBJc051bWJlciwgSXNTdHJpbmcgfSBmcm9tICdjbGFzcy12YWxpZGF0b3InO1xyXG5cclxuZXhwb3J0IGNsYXNzIFBheW1lbnRSZXF1ZXN0RFRPIHtcclxuICBASXNOdW1iZXIoKVxyXG4gIHByaWNlOiBudW1iZXI7XHJcbiAgQElzU3RyaW5nKClcclxuICBkZXNjcmlwdGlvbjogc3RyaW5nO1xyXG4gIEBJc1N0cmluZygpXHJcbiAgbmFtZTogc3RyaW5nO1xyXG59XHJcbiJdLCJ2ZXJzaW9uIjozfQ==
