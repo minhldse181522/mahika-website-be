@@ -1,0 +1,60 @@
+b7db28bc1068ce143e79a9ee9ce73007
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.OffsetPaginationDto = void 0;
+const tslib_1 = require("tslib");
+const swagger_1 = require("@nestjs/swagger");
+const class_transformer_1 = require("class-transformer");
+class OffsetPaginationDto {
+    limit;
+    currentPage;
+    nextPage;
+    previousPage;
+    totalRecords;
+    totalPages;
+    constructor(totalRecords, pageOptions) {
+        this.limit = pageOptions.limit;
+        this.currentPage = pageOptions.page;
+        this.nextPage =
+            this.currentPage < this.totalPages ? this.currentPage + 1 : undefined;
+        this.previousPage =
+            this.currentPage > 1 && this.currentPage - 1 < this.totalPages
+                ? this.currentPage - 1
+                : undefined;
+        this.totalRecords = totalRecords;
+        this.totalPages =
+            this.limit > 0 ? Math.ceil(totalRecords / pageOptions.limit) : 0;
+    }
+}
+exports.OffsetPaginationDto = OffsetPaginationDto;
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_transformer_1.Expose)(),
+    tslib_1.__metadata("design:type", Number)
+], OffsetPaginationDto.prototype, "limit", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_transformer_1.Expose)(),
+    tslib_1.__metadata("design:type", Number)
+], OffsetPaginationDto.prototype, "currentPage", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_transformer_1.Expose)(),
+    tslib_1.__metadata("design:type", Number)
+], OffsetPaginationDto.prototype, "nextPage", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_transformer_1.Expose)(),
+    tslib_1.__metadata("design:type", Number)
+], OffsetPaginationDto.prototype, "previousPage", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_transformer_1.Expose)(),
+    tslib_1.__metadata("design:type", Number)
+], OffsetPaginationDto.prototype, "totalRecords", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_transformer_1.Expose)(),
+    tslib_1.__metadata("design:type", Number)
+], OffsetPaginationDto.prototype, "totalPages", void 0);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXEZQVFxcU1VNTUVSXzIwMjVcXEVYRTIwMVxcbWFoaWthLXdlYnNpdGUtYmFja2VuZFxcc3JjXFxjb21tb25cXGR0b1xcb2Zmc2V0LXBhZ2luYXRpb25cXG9mZnNldC1wYWdpbmF0aW9uLmR0by50cyIsIm1hcHBpbmdzIjoiOzs7O0FBQUEsNkNBQThDO0FBQzlDLHlEQUEyQztBQUczQyxNQUFhLG1CQUFtQjtJQUdyQixLQUFLLENBQVM7SUFJZCxXQUFXLENBQVM7SUFJcEIsUUFBUSxDQUFVO0lBSWxCLFlBQVksQ0FBVTtJQUl0QixZQUFZLENBQVM7SUFJckIsVUFBVSxDQUFTO0lBRTVCLFlBQVksWUFBb0IsRUFBRSxXQUEyQjtRQUMzRCxJQUFJLENBQUMsS0FBSyxHQUFHLFdBQVcsQ0FBQyxLQUFLLENBQUM7UUFDL0IsSUFBSSxDQUFDLFdBQVcsR0FBRyxXQUFXLENBQUMsSUFBSSxDQUFDO1FBQ3BDLElBQUksQ0FBQyxRQUFRO1lBQ1gsSUFBSSxDQUFDLFdBQVcsR0FBRyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUMsV0FBVyxHQUFHLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxDQUFDO1FBQ3hFLElBQUksQ0FBQyxZQUFZO1lBQ2YsSUFBSSxDQUFDLFdBQVcsR0FBRyxDQUFDLElBQUksSUFBSSxDQUFDLFdBQVcsR0FBRyxDQUFDLEdBQUcsSUFBSSxDQUFDLFVBQVU7Z0JBQzVELENBQUMsQ0FBQyxJQUFJLENBQUMsV0FBVyxHQUFHLENBQUM7Z0JBQ3RCLENBQUMsQ0FBQyxTQUFTLENBQUM7UUFDaEIsSUFBSSxDQUFDLFlBQVksR0FBRyxZQUFZLENBQUM7UUFDakMsSUFBSSxDQUFDLFVBQVU7WUFDYixJQUFJLENBQUMsS0FBSyxHQUFHLENBQUMsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxZQUFZLEdBQUcsV0FBVyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDckUsQ0FBQztDQUNGO0FBdENELGtEQXNDQztBQW5DVTtJQUZSLElBQUEscUJBQVcsR0FBRTtJQUNiLElBQUEsMEJBQU0sR0FBRTs7a0RBQ2M7QUFJZDtJQUZSLElBQUEscUJBQVcsR0FBRTtJQUNiLElBQUEsMEJBQU0sR0FBRTs7d0RBQ29CO0FBSXBCO0lBRlIsSUFBQSxxQkFBVyxHQUFFO0lBQ2IsSUFBQSwwQkFBTSxHQUFFOztxREFDa0I7QUFJbEI7SUFGUixJQUFBLHFCQUFXLEdBQUU7SUFDYixJQUFBLDBCQUFNLEdBQUU7O3lEQUNzQjtBQUl0QjtJQUZSLElBQUEscUJBQVcsR0FBRTtJQUNiLElBQUEsMEJBQU0sR0FBRTs7eURBQ3FCO0FBSXJCO0lBRlIsSUFBQSxxQkFBVyxHQUFFO0lBQ2IsSUFBQSwwQkFBTSxHQUFFOzt1REFDbUIiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRDpcXEZQVFxcU1VNTUVSXzIwMjVcXEVYRTIwMVxcbWFoaWthLXdlYnNpdGUtYmFja2VuZFxcc3JjXFxjb21tb25cXGR0b1xcb2Zmc2V0LXBhZ2luYXRpb25cXG9mZnNldC1wYWdpbmF0aW9uLmR0by50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBcGlQcm9wZXJ0eSB9IGZyb20gJ0BuZXN0anMvc3dhZ2dlcic7XG5pbXBvcnQgeyBFeHBvc2UgfSBmcm9tICdjbGFzcy10cmFuc2Zvcm1lcic7XG5pbXBvcnQgeyBQYWdlT3B0aW9uc0R0byB9IGZyb20gJy4vcGFnZS1vcHRpb25zLmR0byc7XG5cbmV4cG9ydCBjbGFzcyBPZmZzZXRQYWdpbmF0aW9uRHRvIHtcbiAgQEFwaVByb3BlcnR5KClcbiAgQEV4cG9zZSgpXG4gIHJlYWRvbmx5IGxpbWl0OiBudW1iZXI7XG5cbiAgQEFwaVByb3BlcnR5KClcbiAgQEV4cG9zZSgpXG4gIHJlYWRvbmx5IGN1cnJlbnRQYWdlOiBudW1iZXI7XG5cbiAgQEFwaVByb3BlcnR5KClcbiAgQEV4cG9zZSgpXG4gIHJlYWRvbmx5IG5leHRQYWdlPzogbnVtYmVyO1xuXG4gIEBBcGlQcm9wZXJ0eSgpXG4gIEBFeHBvc2UoKVxuICByZWFkb25seSBwcmV2aW91c1BhZ2U/OiBudW1iZXI7XG5cbiAgQEFwaVByb3BlcnR5KClcbiAgQEV4cG9zZSgpXG4gIHJlYWRvbmx5IHRvdGFsUmVjb3JkczogbnVtYmVyO1xuXG4gIEBBcGlQcm9wZXJ0eSgpXG4gIEBFeHBvc2UoKVxuICByZWFkb25seSB0b3RhbFBhZ2VzOiBudW1iZXI7XG5cbiAgY29uc3RydWN0b3IodG90YWxSZWNvcmRzOiBudW1iZXIsIHBhZ2VPcHRpb25zOiBQYWdlT3B0aW9uc0R0bykge1xuICAgIHRoaXMubGltaXQgPSBwYWdlT3B0aW9ucy5saW1pdDtcbiAgICB0aGlzLmN1cnJlbnRQYWdlID0gcGFnZU9wdGlvbnMucGFnZTtcbiAgICB0aGlzLm5leHRQYWdlID1cbiAgICAgIHRoaXMuY3VycmVudFBhZ2UgPCB0aGlzLnRvdGFsUGFnZXMgPyB0aGlzLmN1cnJlbnRQYWdlICsgMSA6IHVuZGVmaW5lZDtcbiAgICB0aGlzLnByZXZpb3VzUGFnZSA9XG4gICAgICB0aGlzLmN1cnJlbnRQYWdlID4gMSAmJiB0aGlzLmN1cnJlbnRQYWdlIC0gMSA8IHRoaXMudG90YWxQYWdlc1xuICAgICAgICA/IHRoaXMuY3VycmVudFBhZ2UgLSAxXG4gICAgICAgIDogdW5kZWZpbmVkO1xuICAgIHRoaXMudG90YWxSZWNvcmRzID0gdG90YWxSZWNvcmRzO1xuICAgIHRoaXMudG90YWxQYWdlcyA9XG4gICAgICB0aGlzLmxpbWl0ID4gMCA/IE1hdGguY2VpbCh0b3RhbFJlY29yZHMgLyBwYWdlT3B0aW9ucy5saW1pdCkgOiAwO1xuICB9XG59XG4iXSwidmVyc2lvbiI6M30=

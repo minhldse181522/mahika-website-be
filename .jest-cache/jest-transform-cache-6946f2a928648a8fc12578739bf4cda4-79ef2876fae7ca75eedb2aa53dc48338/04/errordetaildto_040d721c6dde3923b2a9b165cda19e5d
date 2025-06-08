@@ -1,0 +1,25 @@
+872e2625df3b788caf5e1861f834f1ae
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ErrorDetailDto = void 0;
+const tslib_1 = require("tslib");
+const swagger_1 = require("@nestjs/swagger");
+class ErrorDetailDto {
+    property;
+    code;
+    message;
+}
+exports.ErrorDetailDto = ErrorDetailDto;
+tslib_1.__decorate([
+    (0, swagger_1.ApiPropertyOptional)(),
+    tslib_1.__metadata("design:type", String)
+], ErrorDetailDto.prototype, "property", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    tslib_1.__metadata("design:type", String)
+], ErrorDetailDto.prototype, "code", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    tslib_1.__metadata("design:type", String)
+], ErrorDetailDto.prototype, "message", void 0);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXEZQVFxcU1VNTUVSXzIwMjVcXEVYRTIwMVxcbWFoaWthLXdlYnNpdGUtYmFja2VuZFxcc3JjXFxjb21tb25cXGR0b1xcZXJyb3ItZGV0YWlsLmR0by50cyIsIm1hcHBpbmdzIjoiOzs7O0FBQUEsNkNBQW1FO0FBRW5FLE1BQWEsY0FBYztJQUV6QixRQUFRLENBQVM7SUFHakIsSUFBSSxDQUFTO0lBR2IsT0FBTyxDQUFTO0NBQ2pCO0FBVEQsd0NBU0M7QUFQQztJQURDLElBQUEsNkJBQW1CLEdBQUU7O2dEQUNMO0FBR2pCO0lBREMsSUFBQSxxQkFBVyxHQUFFOzs0Q0FDRDtBQUdiO0lBREMsSUFBQSxxQkFBVyxHQUFFOzsrQ0FDRSIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJEOlxcRlBUXFxTVU1NRVJfMjAyNVxcRVhFMjAxXFxtYWhpa2Etd2Vic2l0ZS1iYWNrZW5kXFxzcmNcXGNvbW1vblxcZHRvXFxlcnJvci1kZXRhaWwuZHRvLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEFwaVByb3BlcnR5LCBBcGlQcm9wZXJ0eU9wdGlvbmFsIH0gZnJvbSAnQG5lc3Rqcy9zd2FnZ2VyJztcblxuZXhwb3J0IGNsYXNzIEVycm9yRGV0YWlsRHRvIHtcbiAgQEFwaVByb3BlcnR5T3B0aW9uYWwoKVxuICBwcm9wZXJ0eTogc3RyaW5nO1xuXG4gIEBBcGlQcm9wZXJ0eSgpXG4gIGNvZGU6IHN0cmluZztcblxuICBAQXBpUHJvcGVydHkoKVxuICBtZXNzYWdlOiBzdHJpbmc7XG59XG4iXSwidmVyc2lvbiI6M30=

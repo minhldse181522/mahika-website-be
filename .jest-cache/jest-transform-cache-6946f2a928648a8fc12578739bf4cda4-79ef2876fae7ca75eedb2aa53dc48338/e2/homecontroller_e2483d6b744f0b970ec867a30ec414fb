@@ -1,0 +1,26 @@
+c1901a94db9a701bb99eb03fbe5db7c2
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HomeController = void 0;
+const tslib_1 = require("tslib");
+const http_decorators_1 = require("@/decorators/http.decorators");
+const public_decorator_1 = require("@/decorators/public.decorator");
+const common_1 = require("@nestjs/common");
+let HomeController = class HomeController {
+    home() {
+        return 'Welcome to the API';
+    }
+};
+exports.HomeController = HomeController;
+tslib_1.__decorate([
+    (0, common_1.Get)(),
+    (0, public_decorator_1.Public)(),
+    (0, http_decorators_1.ApiPublic)({ summary: 'Home' }),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", []),
+    tslib_1.__metadata("design:returntype", void 0)
+], HomeController.prototype, "home", null);
+exports.HomeController = HomeController = tslib_1.__decorate([
+    (0, common_1.Controller)('/')
+], HomeController);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXEZQVFxcU1VNTUVSXzIwMjVcXEVYRTIwMVxcbWFoaWthLXdlYnNpdGUtYmFja2VuZFxcc3JjXFxhcGlcXGhvbWVcXGhvbWUuY29udHJvbGxlci50cyIsIm1hcHBpbmdzIjoiOzs7O0FBQUEsa0VBQXlEO0FBQ3pELG9FQUF1RDtBQUN2RCwyQ0FBaUQ7QUFHMUMsSUFBTSxjQUFjLEdBQXBCLE1BQU0sY0FBYztJQUl6QixJQUFJO1FBQ0YsT0FBTyxvQkFBb0IsQ0FBQztJQUM5QixDQUFDO0NBQ0YsQ0FBQTtBQVBZLHdDQUFjO0FBSXpCO0lBSEMsSUFBQSxZQUFHLEdBQUU7SUFDTCxJQUFBLHlCQUFNLEdBQUU7SUFDUixJQUFBLDJCQUFTLEVBQUMsRUFBRSxPQUFPLEVBQUUsTUFBTSxFQUFFLENBQUM7Ozs7MENBRzlCO3lCQU5VLGNBQWM7SUFEMUIsSUFBQSxtQkFBVSxFQUFDLEdBQUcsQ0FBQztHQUNILGNBQWMsQ0FPMUIiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRDpcXEZQVFxcU1VNTUVSXzIwMjVcXEVYRTIwMVxcbWFoaWthLXdlYnNpdGUtYmFja2VuZFxcc3JjXFxhcGlcXGhvbWVcXGhvbWUuY29udHJvbGxlci50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBcGlQdWJsaWMgfSBmcm9tICdAL2RlY29yYXRvcnMvaHR0cC5kZWNvcmF0b3JzJztcbmltcG9ydCB7IFB1YmxpYyB9IGZyb20gJ0AvZGVjb3JhdG9ycy9wdWJsaWMuZGVjb3JhdG9yJztcbmltcG9ydCB7IENvbnRyb2xsZXIsIEdldCB9IGZyb20gJ0BuZXN0anMvY29tbW9uJztcblxuQENvbnRyb2xsZXIoJy8nKVxuZXhwb3J0IGNsYXNzIEhvbWVDb250cm9sbGVyIHtcbiAgQEdldCgpXG4gIEBQdWJsaWMoKVxuICBAQXBpUHVibGljKHsgc3VtbWFyeTogJ0hvbWUnIH0pXG4gIGhvbWUoKSB7XG4gICAgcmV0dXJuICdXZWxjb21lIHRvIHRoZSBBUEknO1xuICB9XG59XG4iXSwidmVyc2lvbiI6M30=

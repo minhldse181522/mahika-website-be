@@ -1,0 +1,43 @@
+014fd655e25abd60a336a37e727f1e1c
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ErrorDto = void 0;
+const tslib_1 = require("tslib");
+const swagger_1 = require("@nestjs/swagger");
+const error_detail_dto_1 = require("./error-detail.dto");
+class ErrorDto {
+    timestamp;
+    statusCode;
+    error;
+    errorCode;
+    message;
+    details;
+    stack;
+    trace;
+}
+exports.ErrorDto = ErrorDto;
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    tslib_1.__metadata("design:type", String)
+], ErrorDto.prototype, "timestamp", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    tslib_1.__metadata("design:type", Number)
+], ErrorDto.prototype, "statusCode", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    tslib_1.__metadata("design:type", String)
+], ErrorDto.prototype, "error", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiPropertyOptional)(),
+    tslib_1.__metadata("design:type", String)
+], ErrorDto.prototype, "errorCode", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiProperty)(),
+    tslib_1.__metadata("design:type", String)
+], ErrorDto.prototype, "message", void 0);
+tslib_1.__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ type: error_detail_dto_1.ErrorDetailDto, isArray: true }),
+    tslib_1.__metadata("design:type", Array)
+], ErrorDto.prototype, "details", void 0);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXEZQVFxcU1VNTUVSXzIwMjVcXEVYRTIwMVxcbWFoaWthLXdlYnNpdGUtYmFja2VuZFxcc3JjXFxjb21tb25cXGR0b1xcZXJyb3IuZHRvLnRzIiwibWFwcGluZ3MiOiI7Ozs7QUFBQSw2Q0FBbUU7QUFDbkUseURBQW9EO0FBRXBELE1BQWEsUUFBUTtJQUVuQixTQUFTLENBQVM7SUFHbEIsVUFBVSxDQUFTO0lBR25CLEtBQUssQ0FBUztJQUdkLFNBQVMsQ0FBVTtJQUduQixPQUFPLENBQVM7SUFHaEIsT0FBTyxDQUFvQjtJQUUzQixLQUFLLENBQVU7SUFFZixLQUFLLENBQW1CO0NBQ3pCO0FBdEJELDRCQXNCQztBQXBCQztJQURDLElBQUEscUJBQVcsR0FBRTs7MkNBQ0k7QUFHbEI7SUFEQyxJQUFBLHFCQUFXLEdBQUU7OzRDQUNLO0FBR25CO0lBREMsSUFBQSxxQkFBVyxHQUFFOzt1Q0FDQTtBQUdkO0lBREMsSUFBQSw2QkFBbUIsR0FBRTs7MkNBQ0g7QUFHbkI7SUFEQyxJQUFBLHFCQUFXLEdBQUU7O3lDQUNFO0FBR2hCO0lBREMsSUFBQSw2QkFBbUIsRUFBQyxFQUFFLElBQUksRUFBRSxpQ0FBYyxFQUFFLE9BQU8sRUFBRSxJQUFJLEVBQUUsQ0FBQzs7eUNBQ2xDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkQ6XFxGUFRcXFNVTU1FUl8yMDI1XFxFWEUyMDFcXG1haGlrYS13ZWJzaXRlLWJhY2tlbmRcXHNyY1xcY29tbW9uXFxkdG9cXGVycm9yLmR0by50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBcGlQcm9wZXJ0eSwgQXBpUHJvcGVydHlPcHRpb25hbCB9IGZyb20gJ0BuZXN0anMvc3dhZ2dlcic7XG5pbXBvcnQgeyBFcnJvckRldGFpbER0byB9IGZyb20gJy4vZXJyb3ItZGV0YWlsLmR0byc7XG5cbmV4cG9ydCBjbGFzcyBFcnJvckR0byB7XG4gIEBBcGlQcm9wZXJ0eSgpXG4gIHRpbWVzdGFtcDogc3RyaW5nO1xuXG4gIEBBcGlQcm9wZXJ0eSgpXG4gIHN0YXR1c0NvZGU6IG51bWJlcjtcblxuICBAQXBpUHJvcGVydHkoKVxuICBlcnJvcjogc3RyaW5nO1xuXG4gIEBBcGlQcm9wZXJ0eU9wdGlvbmFsKClcbiAgZXJyb3JDb2RlPzogc3RyaW5nO1xuXG4gIEBBcGlQcm9wZXJ0eSgpXG4gIG1lc3NhZ2U6IHN0cmluZztcblxuICBAQXBpUHJvcGVydHlPcHRpb25hbCh7IHR5cGU6IEVycm9yRGV0YWlsRHRvLCBpc0FycmF5OiB0cnVlIH0pXG4gIGRldGFpbHM/OiBFcnJvckRldGFpbER0b1tdO1xuXG4gIHN0YWNrPzogc3RyaW5nO1xuXG4gIHRyYWNlPzogRXJyb3IgfCB1bmtub3duO1xufVxuIl0sInZlcnNpb24iOjN9
