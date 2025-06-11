@@ -5,7 +5,6 @@ import appConfig from '@/config/app.config';
 import { AllConfigType } from '@/config/config.type';
 import databaseConfig from '@/database/config/database.config';
 import { TypeOrmConfigService } from '@/database/typeorm-config.service';
-import redisConfig from '@/redis/config/redis.config';
 import { BullModule } from '@nestjs/bullmq';
 import { CacheModule } from '@nestjs/cache-manager';
 import { ModuleMetadata } from '@nestjs/common';
@@ -20,7 +19,7 @@ function generateModulesSet() {
   const imports: ModuleMetadata['imports'] = [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [appConfig, databaseConfig, redisConfig, /* authConfig */],
+      load: [appConfig, databaseConfig, /* authConfig */],
       envFilePath: ['.env'],
     }),
   ];
@@ -35,27 +34,6 @@ function generateModulesSet() {
 
       return new DataSource(options).initialize();
     },
-  });
-
-  const bullModule = BullModule.forRootAsync({
-    imports: [ConfigModule],
-    useFactory: (configService: ConfigService<AllConfigType>) => {
-      return {
-        connection: {
-          host: configService.getOrThrow('redis.host', {
-            infer: true,
-          }),
-          port: configService.getOrThrow('redis.port', {
-            infer: true,
-          }),
-          password: configService.getOrThrow('redis.password', {
-            infer: true,
-          }),
-          tls: configService.get('redis.tlsEnabled', { infer: true }),
-        },
-      };
-    },
-    inject: [ConfigService],
   });
 
   // const i18nModule = I18nModule.forRootAsync({
@@ -92,37 +70,13 @@ function generateModulesSet() {
     useFactory: loggerFactory,
   });
 
-  const cacheModule = CacheModule.registerAsync({
-    imports: [ConfigModule],
-    useFactory: async (configService: ConfigService<AllConfigType>) => {
-      return {
-        store: await redisStore({
-          host: configService.getOrThrow('redis.host', {
-            infer: true,
-          }),
-          port: configService.getOrThrow('redis.port', {
-            infer: true,
-          }),
-          password: configService.getOrThrow('redis.password', {
-            infer: true,
-          }),
-          tls: configService.get('redis.tlsEnabled', { infer: true }),
-        }),
-      };
-    },
-    isGlobal: true,
-    inject: [ConfigService],
-  });
-
   const modulesSet = process.env.MODULES_SET || 'monolith';
 
   switch (modulesSet) {
     case 'monolith':
       customModules = [
         ApiModule,
-        bullModule,
         BackgroundModule,
-        cacheModule,
         dbModule,
         loggerModule,
       ];
@@ -130,17 +84,13 @@ function generateModulesSet() {
     case 'api':
       customModules = [
         ApiModule,
-        bullModule,
-        cacheModule,
         dbModule,
         loggerModule,
       ];
       break;
     case 'background':
       customModules = [
-        bullModule,
         BackgroundModule,
-        cacheModule,
         dbModule,
         loggerModule,
       ];
