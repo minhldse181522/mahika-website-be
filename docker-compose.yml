@@ -24,13 +24,8 @@ services:
     environment:
       NODE_ENV: production
       DATABASE_URL: ${DATABASE_URL}
-      REDIS_HOST: ${REDIS_HOST}
-      REDIS_PORT: ${REDIS_PORT}
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-      REDIS_FAMILY: ${REDIS_FAMILY}
     depends_on:
       - postgres
-      - redis
     ports:
       - '3002:3001'
     command: ['npm', 'run', 'start:prod']
