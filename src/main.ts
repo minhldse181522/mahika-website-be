@@ -83,10 +83,10 @@ async function bootstrap() {
     setupSwagger(app);
   }
 
-  const port = configService.getOrThrow('app.port', { infer: true });
-  const host = 'localhost';
-  await app.listen(port, host);
-  console.info(`Server running on http://${host}:${port}`);
+ const port = configService.getOrThrow('app.port', { infer: true });
+const host = '0.0.0.0';
+await app.listen(port, host);
+console.info(`Server running on http://${host}:${port}`);
 
   return app;
 }
